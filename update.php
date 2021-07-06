@@ -64,7 +64,7 @@ if (!empty($_POST['delete'])) {
 		
 	else
 		
-	  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 
 	$sql = "DELETE FROM subitems WHERE itemid='$ids'";
 	
