@@ -13,12 +13,13 @@ $dbname = $ini[db_name];
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 if (!$conn)
-  die(mysqli_connect_error());
+	
+	die(mysqli_connect_error());
 
 // SQL query for creating a new task
 
 if (!empty($_POST['newdescription'])) {
-
+	
 	$descriptions = $_POST['newdescription'] ; 
 	$duedates = $_POST['newduedate'] ; 
 
@@ -30,11 +31,11 @@ if (!empty($_POST['newdescription'])) {
 
 if (!empty($_POST['updateid'])) {
 	
-   $ids = $_POST['updateid'] ; 
-   $statuses = $_POST['updatestatus'] ;
-   $descriptions = $_POST['updatedescription'] ;
-   $duedates = $_POST['updateduedate'] ;
-   $sql = "UPDATE items SET  description='$descriptions' ,duedate='$duedates' ,status='$statuses'  WHERE id='$ids'";
+	$ids = $_POST['updateid'] ; 
+	$statuses = $_POST['updatestatus'] ;
+	$descriptions = $_POST['updatedescription'] ;
+	$duedates = $_POST['updateduedate'] ;
+	$sql = "UPDATE items SET  description='$descriptions' ,duedate='$duedates' ,status='$statuses'  WHERE id='$ids'";
    
 }
 
@@ -42,11 +43,11 @@ if (!empty($_POST['updateid'])) {
 
 if (!empty($_POST['subtaskdescription'])) {
 	
-   $descriptions = $_POST['subtaskdescription'] ; 
-   $ids = $_POST['supertaskid'] ; 
+	$descriptions = $_POST['subtaskdescription'] ; 
+	$ids = $_POST['supertaskid'] ; 
    
-   $sql = "INSERT INTO subitems (itemid, description)
-   VALUES ('$ids' ,'$descriptions')";
+	$sql = "INSERT INTO subitems (itemid, description)
+	VALUES ('$ids' ,'$descriptions')";
 }
 
 // SQL query for deleting a task and all its subtasks
@@ -58,8 +59,11 @@ if (!empty($_POST['delete'])) {
 	$sql = "DELETE FROM items WHERE id='$ids'";
 
 	if (mysqli_query($conn, $sql))
-	  echo "Database updated successfully";
+		
+		echo "Database updated successfully";
+		
 	else
+		
 	  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 
 	$sql = "DELETE FROM subitems WHERE itemid='$ids'";
@@ -79,9 +83,12 @@ if (!empty($_POST['removesubtask'])) {
 // Handle errors and close connection
 
 if (mysqli_query($conn, $sql))
-  echo "Database updated successfully";
+	
+	echo "Database updated successfully";
+  
 else
-  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+	
+	echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 
 mysqli_close($conn);
 ?>
