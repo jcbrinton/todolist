@@ -119,7 +119,9 @@ while($row = mysqli_fetch_assoc($result)) {
 	// Determine styling for status column
 	
 	$classstatus = 'alert-warning';
+	
 	if ( strcmp($row["status"],"Complete")==0)
+		
 		$classstatus = 'alert-success';
 		
 	//Full html for subtable
@@ -139,7 +141,8 @@ while($row = mysqli_fetch_assoc($result)) {
 	//For empty subtask table
 	
 	if(!array_key_exists($rowid, $idArray))
-	  $subtaskrows ="<em><small class='text-muted'>No subtasks</small></em>";
+	  
+		$subtaskrows ="<em><small class='text-muted'>No subtasks</small></em>";
 
 	
 	//Rows for main table
@@ -249,8 +252,8 @@ while($row = mysqli_fetch_assoc($result)) {
 	  <div class="modal-dialog">
 		<div class="modal-content">
 		  <div class="modal-header">
-			<h4 class="modal-title">Create a Subtask</h4>
-			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			 <h4 class="modal-title">Create a Subtask</h4>
+			 <button type="button" class="close" data-dismiss="modal">&times;</button>
 		  </div>
 		  <div class="modal-body">
 			<div class="container">
