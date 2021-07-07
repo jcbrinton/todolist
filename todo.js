@@ -1,26 +1,26 @@
 	$(function () {
 			
 		//call for create and update
-		
-        $('form').on('submit', function (e) {
-			
-		    e.preventDefault();
-		  
-            $.ajax({
-				type: 'post',
+
+		$('form').on('submit', function (e) {
+
+			    e.preventDefault();
+
+		    $.ajax({
+			    	type: 'post',
 				url: 'update.php',
 				data: $('form').serialize(),
 				complete: function () {
 				    location.reload(true);
 				}
-            });
+			});
 		});
 		
 		//call for delete
-		
+
 		$('.delete').on('click', function (e) {
-		
-            $.ajax({
+
+		    $.ajax({
 				type: 'post',
 				url: 'update.php',
 				data: $(this).attr('value')+'='+$(this).attr('id'),
