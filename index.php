@@ -16,11 +16,13 @@
 
 <div class="container" id="maincontainer">
   </br>
+	
   <!-- header -->
   <h2><strong>To Do List</strong></h2>
   <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#createTask">
     Create New Task
   </button>
+	
   <label class="noselect checkbox-inline"><input id='pendingcheckbox' type="checkbox" value="" checked>Pending</label>
   <label class="noselect checkbox-inline"><input id='completecheckbox' type="checkbox" value="" checked>Complete</label>
   </br>
@@ -42,6 +44,7 @@ $dbname = $ini[db_name];
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 if (!$conn)
+	
   die("Connection failed: " . mysqli_connect_error());
 
 // SQL query to read tasks
@@ -51,7 +54,7 @@ $result = mysqli_query($conn, $sql);
 
 // Create table and column headers
 	
-  echo "<table class='table table-condensed' >
+echo       "<table class='table table-condensed' >
 		<col style='width:5%'>
 		<col style='width:40%'>
 		<col style='width:5%'>
@@ -70,14 +73,16 @@ $result = mysqli_query($conn, $sql);
 			<th>Delete</th>
 		  </tr>
 		</thead>
-		<tbody>";
+	     <tbody>";
 	
 mysqli_close($conn);
 	
 // Establish connection for subtask
+
 $subconn = mysqli_connect($servername, $username, $password, $dbname);
 	
 if (!$subconn)
+	
 	die("Connection failed: " . mysqli_connect_error());
 	
 // SQL query to read subtasks
@@ -106,6 +111,7 @@ foreach ($subrows as $subrow) {
 
 
 // Display each of the results and subtasks
+
 while($row = mysqli_fetch_assoc($result)) {
 	  
 	$rowid = $row["id"];
@@ -116,7 +122,7 @@ while($row = mysqli_fetch_assoc($result)) {
 	if ( strcmp($row["status"],"Complete")==0)
 		$classstatus = 'alert-success';
 		
-	//full html for subtable
+	//Full html for subtable
 	
 	$subtaskrows =    "<a href='' data-toggle='collapse' data-target='#collapse".$rowid."'>
 					<small>subtasks</small>
@@ -130,13 +136,13 @@ while($row = mysqli_fetch_assoc($result)) {
 					</div>
 				</div>";
 		
-	//for empty subtask table
+	//For empty subtask table
 	
 	if(!array_key_exists($rowid, $idArray))
 	  $subtaskrows ="<em><small class='text-muted'>No subtasks</small></em>";
 
 	
-	//rows for main table
+	//Rows for main table
 	
     echo
 	"<tr class='rows' data-status='".$row["status"]."'>
@@ -167,15 +173,15 @@ while($row = mysqli_fetch_assoc($result)) {
 	
   }
   
-  //closing tags for main table
+  //Closing tags for main table
   
   echo "</tbody>
         </table>";	
 		
 ?>
 
-	<!-- modal for creating a new task -->
-	<div class="modal" id="createTask">
+    <!-- modal for creating a new task -->
+    <div class="modal" id="createTask">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -198,8 +204,8 @@ while($row = mysqli_fetch_assoc($result)) {
 		    </div>
 		  </div>
 		</div>
-      </div>
-    </div>
+              </div>
+           </div>
   
     <!-- modal for updating a task -->
 	<div class="modal" id="updateTask">
