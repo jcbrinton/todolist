@@ -1,9 +1,10 @@
 <?php
 
 // Get credentials
-$ini = parse_ini_file('config/todo.ini');
 
-$servername = "localhost:3306";
+$ini = parse_ini_file('todo.ini');
+
+$servername = $ini[db_server];
 $username = $ini[db_user];
 $password = $ini[db_password];
 $dbname = $ini[db_name];
@@ -35,7 +36,7 @@ if (!empty($_POST['updateid'])) {
 	$statuses = $_POST['updatestatus'] ;
 	$descriptions = $_POST['updatedescription'] ;
 	$duedates = $_POST['updateduedate'] ;
-	$sql = "UPDATE items SET  description='$descriptions' ,duedate='$duedates' ,status='$statuses'  WHERE id='$ids'";
+	$sql = "UPDATE items SET  description='$descriptions' , duedate='$duedates' , status='$statuses'  WHERE id='$ids'";
    
 }
 
@@ -91,4 +92,5 @@ else
 	echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 
 mysqli_close($conn);
+
 ?>
