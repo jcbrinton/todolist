@@ -1,0 +1,31 @@
+.noselect {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+			user-select: none; 
+}
+html {
+    overflow-y: scroll;
+}
+.table-condensed td .btn{
+	padding-top: 1px; 
+	padding-bottom: 4px;
+}
+.noselect, #pendingcheckbox , #completecheckbox{
+	cursor:pointer;
+}
+.alert-warning , .alert-success{
+	text-align: center; 
+	border-radius: 25px;
+}
+#subtaskentry, #identry {
+	display: none;
+}
+.modal form button{
+	float: right;
+}
+.subtable td{
+	padding: 0px;
+}
