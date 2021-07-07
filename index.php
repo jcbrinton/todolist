@@ -95,7 +95,7 @@ $idArray = array();
 
 foreach ($subrows as $subrow) {
 		
-	//create rows for subtable
+	//Create rows for subtable
 	
 	$idArray[$subrow["itemid"]] = $idArray[$subrow["itemid"]] . "
 			<tr>
@@ -145,7 +145,7 @@ while($row = mysqli_fetch_assoc($result)) {
 		$subtaskrows ="<em><small class='text-muted'>No subtasks</small></em>";
 
 	
-	//Rows for main table
+    //Rows for main table
 	
     echo
 	"<tr class='rows' data-status='".$row["status"]."'>
